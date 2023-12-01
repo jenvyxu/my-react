@@ -32,7 +32,7 @@ function markUpdateFromFiberToRoot(fiber: FiberNode) {
 }
 
 function renderRoot(root: FiberRootNode) {
-	// 初始化
+	// 初始化 prepare workInProgress
 	prepareFreshStack(root);
 
 	do {
@@ -63,7 +63,7 @@ function commitRoot(root: FiberRootNode) {
 	root.finishedWork === null;
 	// 判断是否存在3个子阶段需要执行的操作
 	const subtreeHasEffect =
-		(finishedWork.subTreeFlags & MutationMask) !== NoFlags;
+		(finishedWork.subtreeFlags & MutationMask) !== NoFlags;
 	const rootHasEffect = (finishedWork.flags & MutationMask) !== NoFlags;
 
 	if (subtreeHasEffect || rootHasEffect) {
@@ -105,5 +105,6 @@ function completeUnitOfWork(fiber: FiberNode) {
 			return;
 		}
 		node = node.return;
+		workInProgress = node;
 	} while (node !== null);
 }
