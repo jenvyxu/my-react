@@ -1,5 +1,6 @@
 import {
-	appendInitalChild,
+	Container,
+	appendInitialChild,
 	createInstance,
 	createTextInstance
 } from 'hostConfig';
@@ -48,11 +49,11 @@ export const completeWork = (wip: FiberNode) => {
 	}
 };
 
-function appendAllChildren(parent: FiberNode, wip: FiberNode) {
+function appendAllChildren(parent: Container, wip: FiberNode) {
 	let node = wip.child;
 	while (node !== null) {
 		if (node.tag === HostComponent || node.tag === HostText) {
-			appendInitalChild(parent, node.stateNode);
+			appendInitialChild(parent, node.stateNode);
 		} else if (node.child !== null) {
 			node.child.return = node;
 			node = node.child;
