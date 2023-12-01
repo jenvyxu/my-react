@@ -21,7 +21,7 @@ export class FiberNode {
 	// 双缓存
 	alternate: FiberNode | null;
 	flags: Flags;
-	subTreeFlags: Flags;
+	subtreeFlags: Flags;
 
 	updateQueue: unknown;
 
@@ -48,7 +48,7 @@ export class FiberNode {
 		this.alternate = null;
 		// 副作用 更新删除节点
 		this.flags = NoFlags;
-		this.subTreeFlags = NoFlags;
+		this.subtreeFlags = NoFlags;
 	}
 }
 
@@ -81,7 +81,7 @@ export const createWorkInProgress = (
 		// update
 		wip.pendingProps = pendingProps;
 		wip.flags = NoFlags;
-		wip.subTreeFlags = NoFlags;
+		wip.subtreeFlags = NoFlags;
 	}
 	wip.type = type;
 	wip.updateQueue = updateQueue;

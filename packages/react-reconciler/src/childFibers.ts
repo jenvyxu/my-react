@@ -46,18 +46,20 @@ function ChildReconciler(shouldTrackEffects: boolean) {
 					);
 				default:
 					if (__DEV__) {
-						console.warn('未实现的reconcile类型');
+						console.warn('未实现的reconcile类型', newChild);
 					}
 					break;
 			}
 		}
 		// TODO 多节点的情况 ul > li *3
-		//HostText
+
+		// HostText
 		if (typeof newChild === 'string' || typeof newChild === 'number') {
 			return placeSingleChild(
 				reconcileSingleTextNode(returnFiber, currentFiber, newChild)
 			);
 		}
+
 		if (__DEV__) {
 			console.warn('未实现的reconcile类型', newChild);
 		}

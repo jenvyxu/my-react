@@ -33,10 +33,9 @@ export const completeWork = (wip: FiberNode) => {
 				// 构建dom
 				const instance = createTextInstance(newProps.content);
 				wip.stateNode = instance;
-				bubbleProperties(wip);
-				return null;
 			}
-			break;
+			bubbleProperties(wip);
+			return null;
 		case HostRoot:
 			bubbleProperties(wip);
 			return null;
@@ -44,7 +43,6 @@ export const completeWork = (wip: FiberNode) => {
 			if (__DEV__) {
 				console.warn('未处理的 completeWork 情况', wip);
 			}
-
 			break;
 	}
 };
@@ -81,11 +79,11 @@ function bubbleProperties(wip: FiberNode) {
 	let child = wip.child;
 
 	while (child !== null) {
-		subtreeFlags |= child.subTreeFlags;
+		subtreeFlags |= child.subtreeFlags;
 		subtreeFlags |= child.flags;
 
 		child.return = wip;
 		child = child.sibling;
 	}
-	wip.subTreeFlags |= subtreeFlags;
+	wip.subtreeFlags |= subtreeFlags;
 }

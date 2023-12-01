@@ -11,7 +11,7 @@ export const commitMutationEffects = (finishedWork: FiberNode) => {
 		// traverse down
 		const child: FiberNode | null = nextEffect.child;
 		if (
-			(nextEffect.subTreeFlags & MutationMask) !== NoFlags &&
+			(nextEffect.subtreeFlags & MutationMask) !== NoFlags &&
 			child !== null
 		) {
 			nextEffect = child;
