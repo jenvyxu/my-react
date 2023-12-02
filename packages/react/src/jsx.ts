@@ -25,6 +25,14 @@ const ReactElement = function (
 	return element;
 };
 
+export const isValidElement = (object: any) => {
+	return (
+		typeof object === 'object' &&
+		object !== null &&
+		object.$$typeof === REACT_ELEMENT_TYPE
+	);
+};
+
 export const jsx = (type: ElementType, config: any, ...maybeChildren: any) => {
 	let key: Key = null;
 	let ref: Ref = null;
@@ -51,7 +59,7 @@ export const jsx = (type: ElementType, config: any, ...maybeChildren: any) => {
 	}
 
 	const maybeChildrenLength = maybeChildren.length;
-	if (maybeChildren > 0) {
+	if (maybeChildrenLength) {
 		if (maybeChildrenLength === 1) {
 			props.children = maybeChildren[0];
 		} else {
