@@ -48,7 +48,7 @@ const HooksDispatcherOnMount: Dispatcher = {
 };
 
 function mountState<State>(
-	initialState: () => State | State
+	initialState: (() => State) | State
 ): [State, Dispatch<State>] {
 	// 找到当前useState对应hook数据
 	const hook = mountWorkInProgressHook();
