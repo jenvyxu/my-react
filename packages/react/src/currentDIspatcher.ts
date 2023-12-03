@@ -6,6 +6,7 @@ export interface Dispatcher {
 
 export type Dispatch<State> = (action: Action<State>) => void;
 
+// 内部数据共享层
 const currentDispatcher: {
 	current: Dispatcher | null;
 } = { current: null };

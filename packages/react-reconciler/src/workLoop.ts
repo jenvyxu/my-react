@@ -50,6 +50,7 @@ function renderRoot(root: FiberRootNode) {
 
 	const finishedWork = root.current.alternate;
 	root.finishedWork = finishedWork;
+	// commit 操作
 	commitRoot(root);
 }
 

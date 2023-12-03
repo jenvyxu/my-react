@@ -7,7 +7,7 @@ function App() {
 	return (
 		<div>
 			{/* <Child /> */}
-			{num}
+			<span>{num}</span>
 		</div>
 	);
 }

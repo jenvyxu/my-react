@@ -1,7 +1,7 @@
 import currentDispatcher, {
 	Dispatcher,
 	resolveDispatcher
-} from './src/currentDIspatcher';
+} from './src/currentDispatcher';
 import { jsxDEV, jsx, isValidElement as isValidElementFn } from './src/jsx';
 
 export const useState: Dispatcher['useState'] = (initialState) => {
