@@ -3,17 +3,27 @@ import ReactDOM from 'react-dom/client';
 
 function App() {
 	const [num, setNum] = useState(100);
-	window.setNum = setNum;
 	return (
-		<div>
-			{/* <Child /> */}
-			<span>{num}</span>
+		<div
+			onClickCapture={(e) => {
+				console.log('container');
+				e.stopPropagation();
+			}}
+		>
+			<div
+				onClick={() => {
+					setNum((val) => ++val);
+					console.log(111);
+				}}
+			>
+				{num}
+			</div>
 		</div>
 	);
 }
 
 function Child() {
-	return <span>hello world</span>;
+	return <p>hello world</p>;
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
